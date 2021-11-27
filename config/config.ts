@@ -4,16 +4,26 @@ import envSchema from 'env-schema'
  * JSON Schema for required environment variables
  */
 export const ENV_SCHEMA = {
-  type: 'object',
-  required: ['HOST', 'PORT', 'SUPABASE_URL', 'SUPABASE_KEY_ANON', 'SUPABASE_KEY_ADMIN'],
+  type: "object",
+  required: [
+    "HOST",
+    "PORT",
+    "SUPABASE_URL",
+    "SUPABASE_KEY_ANON",
+    "SUPABASE_KEY_ADMIN",
+    "PG_URL",
+    "PG_POOL_URL",
+  ],
   properties: {
-    HOST: { type: 'string' },
-    PORT: { type: 'string' },
-    SUPABASE_URL: { type: 'string' },
-    SUPABASE_KEY_ANON: { type: 'string' },
-    SUPABASE_KEY_ADMIN: { type: 'string' },
+    HOST: { type: "string" },
+    PORT: { type: "string" },
+    SUPABASE_URL: { type: "string" },
+    SUPABASE_KEY_ANON: { type: "string" },
+    SUPABASE_KEY_ADMIN: { type: "string" },
+    PG_URL: { type: "string" },
+    PG_POOL_URL: { type: "string" },
   },
-}
+};
 
 /**
  * Load environment variables from .env file in development mode

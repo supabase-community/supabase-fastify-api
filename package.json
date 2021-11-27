@@ -16,7 +16,9 @@
     "fastify": "^3.23.1",
     "fastify-env": "^2.1.1",
     "fastify-now": "^2.4.0",
-    "fastify-supabase": "^1.0.1"
+    "fastify-postgres": "^3.6.0",
+    "fastify-supabase": "^1.0.1",
+    "pg": "^8.7.1"
   },
   "devDependencies": {
     "@types/node": "^16.11.7",

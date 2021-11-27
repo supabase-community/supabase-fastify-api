@@ -1,10 +1,11 @@
-import { ENV_CONFIG } from './config'
+import { ENV_CONFIG } from 'config/config'
 import { FastifyInstance } from 'fastify'
 import { EnvSchemaData } from 'env-schema'
 import fastifyEnv from 'fastify-env'
 import fastifyNow from 'fastify-now'
 import path from 'path'
 import supabase from 'fastify-supabase'
+import postgres from "fastify-postgres";
 
 export default async function registerPlugins(server: FastifyInstance, config: EnvSchemaData) {
   /**
@@ -49,4 +50,26 @@ export default async function registerPlugins(server: FastifyInstance, config: E
     supabaseUrl: process.env.SUPABASE_URL!,
     supabaseKey: process.env.SUPABASE_KEY_ADMIN!,
   })
+
+  /**
+   * Initialize Postgres DIRECT client
+   *
+   * Usage:
+   *    const supabase = this.pg.direct
+   */
+  server.register(postgres, {
+    namespace: "direct",
+    connectionString: process.env.PG_URL!,
+  });
+
+  /**
+   * Initialize Postgres POOL client
+   *
+   * Usage:
+   *    const supabase = this.pg.direct
+   */
+  server.register(postgres, {
+    namespace: "pool",
+    connectionString: process.env.PG_POOL_URL!,
+  });
 }
